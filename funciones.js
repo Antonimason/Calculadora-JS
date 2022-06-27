@@ -5,7 +5,7 @@ var operandoB;
 var operandoC;
 var operacion;
 
-
+/*------------------------------VISUALIZACION DE LOS NUMEROS EN LA PANTALLA-------------------- */
 const pruebaPantalla = (num) => {
     console.log(num);
     abajo.style.fontSize = "30px";
@@ -19,7 +19,7 @@ const pruebaPantalla = (num) => {
     }
     
 }
-
+/*--------------------------BOTONES DE OPERACIONES---------------------- */
 const Suma = ()=> {
     operandoA = abajo.textContent;
     arriba.textContent = abajo.textContent + " + ";
@@ -63,46 +63,60 @@ const Coma = ()=> {
 
 const Igual = ()=> {
     operandoB = abajo.textContent;
-    arriba.textContent += abajo.textContent;
-    limpiar();
-    resolver();
+    if(operandoB !== NaN){
+        arriba.textContent += abajo.textContent;
+        limpiar();
+        resolver();
+    } else {
+        abajo.textContent = "Error de Sintaxis"
+        setTimeout(()=> {Resetear()},3000);
+    }
 }
-
+/*--------------------FUNCION PARA RESOLVER----------------- */
 const resolver = ()=> {
     if(operacion === 1) {
         const resultado = parseFloat(operandoA) + parseFloat(operandoB);
         abajo.textContent += resultado;
+        limpiarArriba();
     }else if(operacion === 2) {
-        const resultado = parseFloat(operandoA) - parseFloat(operandoB);
+        const resultado = parseFloat(operandoA - operandoB);
         abajo.textContent += resultado;
+        limpiarArriba();
     }else if(operacion === 3) {
-        const resultado = parseFloat(operandoA) * parseFloat(operandoB);
+        const resultado = operandoA * operandoB;
         verPantalla(resultado);
+        limpiarArriba();
     }else if (operacion === 4) {
-        const resultado = parseInt(operandoA) / parseInt(operandoB);
+        const resultado = operandoA / operandoB;
         verPantalla(resultado);
+        limpiarArriba();
     }else if(operacion === 5) {
         const resultado = Math.sqrt(operandoC);
         verPantalla(resultado);
     }
 
 }
-
+/*-----------------------PARA VISUALIZAR NUMEROS 2 DECIMALES-------------- */
 const verPantalla = (resultado) => {
-    console.log(resultado.length);
-        if (resultado.length == undefined) {
-            abajo.style.fontSize = "25px";
-            abajo.toString();
-            console.log(resultado);
-            abajo.innerHTML += resultado.toFixed(4);
-            console.log(abajo.innerHTML)
-        } else abajo.textContent += resultado;
+    resultado.toString;
+    if (resultado.length == undefined ) {
+        abajo.toString();
+        console.log(resultado);
+        abajo.innerHTML += resultado.toFixed(2);
+        console.log(abajo.innerHTML)
+    } else abajo.textContent += resultado;
 }
+
+/*---------------------PARA BOTONES DE ELIMINAR------------------ */
 
 const limpiar = ()=> {
     abajo.textContent = "";
 }
 
+const limpiarArriba = ()=> {
+    setTimeout(()=> {arriba.textContent = "";},1000);
+    clearTimeout();
+}
 const Resetear = ()=> {
     arriba.textContent = "";
     abajo.textContent = "";
@@ -111,12 +125,20 @@ const Resetear = ()=> {
     const operacion = "";
 }
 
+const Eliminar = ()=> {
+    let cadena = abajo.textContent;
+    let toArray = cadena.split("");
+    toArray.pop();
+    let joder = toArray.join('');
+    abajo.textContent = joder;
+}
+
 const pantalla = document.querySelector(".pantalla");
 const arriba = document.querySelector(".arriba");
 const abajo = document.querySelector(".abajo");
 const borrar = document.querySelector(".reinicio").addEventListener("click", ()=> Resetear());
 const raiz = document.querySelector(".raiz").addEventListener("click", ()=> raizCuadrada());
-const porcentaje = document.querySelector(".porcentaje");
+const eliminar = document.querySelector(".eliminar").addEventListener("click", ()=> Eliminar());
 const dividir = document.querySelector(".divisor").addEventListener("click", ()=> Dividir());
 const multiplicar = document.querySelector(".multiplica").addEventListener("click", ()=> Multiplicador(9));
 const resta = document.querySelector(".resta").addEventListener("click", ()=> Resta());

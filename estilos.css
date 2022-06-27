@@ -6,18 +6,19 @@
 
 body {
     font-family: sans-serif;
+    height: 100vh;
 }
 
 .fondo {
     width: 100%;
-    height: 100vh;
-    object-fit: cover;
+    height: 100%;
+    object-fit:cover;
 }
 
 .contenedor {
     width: 100%;
-    height: 700px;
-    padding: 110px 0 0 0;
+    height: 600px;
+    padding: 60px 0 0 0;
     position: absolute;
     z-index: 10;
 }
@@ -26,28 +27,25 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr) ;
     grid-template-rows: repeat(7, 50px);
-    grid-gap: 7px 8px;
+    grid-gap: 6px 8px;
     background: rgba(62, 60, 60, 0.9);
     width: 300px;
-    height: 530px;
+    height: 510px;
     margin: 0 auto;
-    padding: 10px;
-    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
+    padding: 5px;
     border-radius: 15px;
-    border: 1px solid lightblue;
+    border: 1px solid rgba(173, 216, 230,0.6);
     box-shadow: #094c66 7px 5px 0px;
 }
 
 .calculadora div {
     font-size: 20px;
     padding: 10px;
-}
-
-.calculadora button {
-    font-size: 18px;
+    margin: 0 5px;
 }
 
 .calculadora .boton{
+    font-size: 18px;
     background-color: #1197cc;
     box-shadow: #094c66 4px 4px 0px;
     border-radius: 8px;
@@ -56,6 +54,8 @@ body {
     text-align: center;
     outline:none;
     border: none;
+    height: 45px;
+    margin: 1px 3px;
 }
 
 .calculadora .boton:active{
@@ -68,9 +68,11 @@ body {
     width: 100%;
     grid-row: 0;
     align-content: flex-start;
+    color: rgba(146, 208, 233, 0.9);
 }
 
 .pantalla {
+    font-family: monospace;
     display: flex;
     justify-content:space-between;
     flex-direction: column;
@@ -90,18 +92,83 @@ body {
     grid-column: 1 / span 2;
 }
 
+.sociales {
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    text-align:right ;
+    font-size: 30px;
+    display: flex;
+    height: 100%;
+    flex-direction:row;
+    align-items: flex-end;
+    padding-bottom: 50px;
+}
+.sociales a{
+    text-decoration: none;
+    color: rgb(132, 189, 223);
+    cursor: pointer;
+    display: block;
+    margin: 0 10px;
+}
+a:hover{
+    color: white;
+}
+
+.copy {
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    text-align:right ;
+    font-size: 30px;
+    display: flex;
+    height: 100%;
+    flex-direction:row;
+    align-items: flex-end;
+    padding-bottom: 20px;
+    margin-left: 15px;
+}
+
+.copy p {
+    color: white;
+    font-size: 15px;
+    text-align: right;;
+}
+
+@media only screen and (min-width: 1024px){
+    .sociales {
+        flex-direction: column;
+        align-items:center;
+        padding-top: 20px;
+    }
+
+    .sociales a{
+        margin: 25px 20px;
+        text-align:end;
+        font-size: 30px;
+    }
+
+    .copy {
+        bottom: 13px;
+        right: 20px;
+
+    }
+}
+
+
 @media only Screen and (min-width: 1500px) {
     .calculadora {
         width: 350px;
         height: 545px;
         grid-template-rows: repeat(7, 55px);
-        grid-gap: 3px 7px;
+        grid-gap: 5px 5px;
         box-shadow: #094c66 10px 8px 0px;
     }
     .calculadora div {
         font-size: 30px;
     }
     .calculadora .boton {
-        height: 50px;
+        height: 48px;
+        margin: 1px 5px;
     }
 }
