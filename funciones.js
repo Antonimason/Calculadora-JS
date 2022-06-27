@@ -8,13 +8,10 @@ var operacion;
 
 const pruebaPantalla = (num) => {
     console.log(num);
-    let parrafo = document.createElement("p");
-    pantalla.appendChild(parrafo);
-    pantalla.style.fontSize = "30px";
-    pantalla.style.padding= "50px 0";
-    pantalla.innerHTML += num;
-    if(pantalla.textContent.length > 15) {
-        pantalla.textContent = "ERROR, NO HAY MÁS ESPACIO";
+    abajo.style.fontSize = "30px";
+    abajo.innerHTML += num;
+    if(abajo.textContent.length > 18) {
+        abajo.textContent = "ERROR, NO HAY MÁS ESPACIO";
         setTimeout(()=> {
             limpiar();
         },2000);
@@ -24,32 +21,36 @@ const pruebaPantalla = (num) => {
 }
 
 const Suma = ()=> {
-    operandoA = pantalla.textContent;
+    operandoA = abajo.textContent;
+    arriba.textContent = abajo.textContent + " + ";
     operacion = 1;
     limpiar();
 }
 
 const Resta = ()=>{
-    operandoA = pantalla.textContent;
+    operandoA = abajo.textContent;
+    arriba.textContent = abajo.textContent + " - ";
     operacion = 2;
     limpiar();
 }
 
 const Multiplicador = () => {
-    operandoA = pantalla.textContent;
+    operandoA = abajo.textContent;
+    arriba.textContent = abajo.textContent + " * ";
     operacion = 3;
     limpiar();
 }
 
 const Dividir = ()=> {
-    operandoA = pantalla.textContent;
+    operandoA = abajo.textContent;
+    arriba.textContent = abajo.textContent + " / ";
     operacion = 4;
-    console.log(operandoA);
+
     limpiar();
 }
 
 const raizCuadrada = ()=> {
-    operandoC = pantalla.textContent;
+    operandoC = abajo.textContent;
     operacion = 5;
     limpiar();
     resolver();
@@ -57,11 +58,12 @@ const raizCuadrada = ()=> {
 
 const Coma = ()=> {
     let simbolo =  ".";
-    pantalla.textContent += simbolo;
+    abajo.textContent += simbolo;
 }
 
 const Igual = ()=> {
-    operandoB = pantalla.textContent;
+    operandoB = abajo.textContent;
+    arriba.textContent += abajo.textContent;
     limpiar();
     resolver();
 }
@@ -69,10 +71,10 @@ const Igual = ()=> {
 const resolver = ()=> {
     if(operacion === 1) {
         const resultado = parseFloat(operandoA) + parseFloat(operandoB);
-        pantalla.textContent += resultado;
+        abajo.textContent += resultado;
     }else if(operacion === 2) {
         const resultado = parseFloat(operandoA) - parseFloat(operandoB);
-        pantalla.textContent += resultado;
+        abajo.textContent += resultado;
     }else if(operacion === 3) {
         const resultado = parseFloat(operandoA) * parseFloat(operandoB);
         verPantalla(resultado);
@@ -88,25 +90,31 @@ const resolver = ()=> {
 
 const verPantalla = (resultado) => {
     console.log(resultado.length);
-    if (resultado.length == undefined) {
-        pantalla.style.fontSize = "25px";
-        pantalla.innerHTML += resultado.toFixed(4);
-    } else pantalla.textContent += resultado.toFixed(4);
+        if (resultado.length == undefined) {
+            abajo.style.fontSize = "25px";
+            abajo.toString();
+            console.log(resultado);
+            abajo.innerHTML += resultado.toFixed(4);
+            console.log(abajo.innerHTML)
+        } else abajo.textContent += resultado;
 }
 
 const limpiar = ()=> {
-    pantalla.textContent = "";
+    abajo.textContent = "";
 }
 
-const Resetar = ()=> {
-    pantalla.textContent = "";
+const Resetear = ()=> {
+    arriba.textContent = "";
+    abajo.textContent = "";
     const operandoA = 0;
     const operandoB = 0;
     const operacion = "";
 }
 
 const pantalla = document.querySelector(".pantalla");
-const borrar = document.querySelector(".reinicio").addEventListener("click", ()=> Resetar());
+const arriba = document.querySelector(".arriba");
+const abajo = document.querySelector(".abajo");
+const borrar = document.querySelector(".reinicio").addEventListener("click", ()=> Resetear());
 const raiz = document.querySelector(".raiz").addEventListener("click", ()=> raizCuadrada());
 const porcentaje = document.querySelector(".porcentaje");
 const dividir = document.querySelector(".divisor").addEventListener("click", ()=> Dividir());
