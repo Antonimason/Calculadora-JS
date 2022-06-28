@@ -7,7 +7,9 @@ var operacion;
 
 /*------------------------------VISUALIZACION DE LOS NUMEROS EN LA PANTALLA-------------------- */
 const pruebaPantalla = (num) => {
-    console.log(num);
+    if(num == 20) {
+        num = ".";
+    }
     abajo.style.fontSize = "30px";
     abajo.innerHTML += num;
     if(abajo.textContent.length > 18) {
@@ -17,10 +19,10 @@ const pruebaPantalla = (num) => {
         },2000);
         clearTimeout();
     }
-    
 }
 /*--------------------------BOTONES DE OPERACIONES---------------------- */
 const Suma = ()=> {
+    if(abajo.textContent == "") abajo.textContent += 0;
     operandoA = abajo.textContent;
     arriba.textContent = abajo.textContent + " + ";
     operacion = 1;
@@ -45,7 +47,6 @@ const Dividir = ()=> {
     operandoA = abajo.textContent;
     arriba.textContent = abajo.textContent + " / ";
     operacion = 4;
-
     limpiar();
 }
 
@@ -56,14 +57,9 @@ const raizCuadrada = ()=> {
     resolver();
 }
 
-const Coma = ()=> {
-    let simbolo =  ".";
-    abajo.textContent += simbolo;
-}
-
 const Igual = ()=> {
-    operandoB = abajo.textContent;
-    if(operandoB !== NaN){
+        operandoB = abajo.textContent;
+        if (parseInt(operandoB) || operandoB == 0) {
         arriba.textContent += abajo.textContent;
         limpiar();
         resolver();
@@ -101,7 +97,6 @@ const verPantalla = (resultado) => {
     resultado.toString;
     if (resultado.length == undefined ) {
         abajo.toString();
-        console.log(resultado);
         abajo.innerHTML += resultado.toFixed(2);
         console.log(abajo.innerHTML)
     } else abajo.textContent += resultado;
@@ -144,7 +139,7 @@ const multiplicar = document.querySelector(".multiplica").addEventListener("clic
 const resta = document.querySelector(".resta").addEventListener("click", ()=> Resta());
 const suma = document.querySelector(".suma").addEventListener("click", ()=> Suma());
 const igual = document.querySelector(".igual").addEventListener("click", ()=> Igual());
-const coma = document.querySelector(".coma").addEventListener("click", ()=> Coma());
+const coma = document.querySelector(".coma").addEventListener("click", ()=> pruebaPantalla(20));
 const n1 = document.querySelector(".uno").addEventListener("click", () => pruebaPantalla(1));
 const n2 = document.querySelector(".dos").addEventListener("click", () => pruebaPantalla(2));
 const n3 = document.querySelector(".tres").addEventListener("click", () => pruebaPantalla(3));
