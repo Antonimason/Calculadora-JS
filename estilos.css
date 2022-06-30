@@ -159,9 +159,6 @@ a:hover{
 
 
 @media only Screen and (min-width: 1400px) {
-    .contenedor {
-        padding-top: 250px;
-    }
     .calculadora {
         width: 350px;
         height: 545px;

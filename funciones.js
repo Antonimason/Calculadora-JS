@@ -4,14 +4,12 @@ var operandoA;
 var operandoB;
 var operandoC;
 var operacion;
+var resultado = 0;
 
 /*------------------------------VISUALIZACION DE LOS NUMEROS EN LA PANTALLA-------------------- */
 const pruebaPantalla = (num) => {
-    if(num == 20) {
-        num = ".";
-    }
     abajo.style.fontSize = "30px";
-    abajo.innerHTML += num;
+    abajo.textContent += num;
     if(abajo.textContent.length > 18) {
         abajo.textContent = "ERROR, NO HAY MÁS ESPACIO";
         setTimeout(()=> {
@@ -29,14 +27,14 @@ const Suma = ()=> {
     limpiar();
 }
 
-const Resta = ()=>{
+const Resta = ()=> {
     operandoA = abajo.textContent;
     arriba.textContent = abajo.textContent + " - ";
     operacion = 2;
     limpiar();
 }
 
-const Multiplicador = () => {
+const Multiplicador = ()=> {
     operandoA = abajo.textContent;
     arriba.textContent = abajo.textContent + " * ";
     operacion = 3;
@@ -58,8 +56,8 @@ const raizCuadrada = ()=> {
 }
 
 const Igual = ()=> {
-        operandoB = abajo.textContent;
-        if (parseInt(operandoB) || operandoB == 0) {
+    operandoB = abajo.textContent;
+    if (parseInt(operandoB) || operandoB == 0) {
         arriba.textContent += abajo.textContent;
         limpiar();
         resolver();
@@ -69,37 +67,42 @@ const Igual = ()=> {
     }
 }
 /*--------------------FUNCION PARA RESOLVER----------------- */
+
 const resolver = ()=> {
     if(operacion === 1) {
-        const resultado = parseFloat(operandoA) + parseFloat(operandoB);
-        abajo.textContent += resultado;
-        limpiarArriba();
+        resultado = parseFloat(operandoA) + parseFloat(operandoB);
+        if(isNaN(resultado)) {
+            limpiar();
+            abajo.textContent = "Error de Sintaxis";
+            setTimeout(()=> {Resetear()},3000);
+        } else {
+            limpiarArriba();
+            abajo.textContent += resultado;
+        }
     }else if(operacion === 2) {
-        const resultado = parseFloat(operandoA - operandoB);
+        resultado = parseFloat(operandoA - operandoB);
         abajo.textContent += resultado;
         limpiarArriba();
     }else if(operacion === 3) {
-        const resultado = operandoA * operandoB;
+        resultado = parseFloat(operandoA) * parseFloat(operandoB);
         verPantalla(resultado);
         limpiarArriba();
     }else if (operacion === 4) {
-        const resultado = operandoA / operandoB;
+        resultado = parseFloat(operandoA) / parseFloat(operandoB);
         verPantalla(resultado);
         limpiarArriba();
     }else if(operacion === 5) {
-        const resultado = Math.sqrt(operandoC);
+        resultado = Math.sqrt(operandoC);
         verPantalla(resultado);
     }
 
 }
 /*-----------------------PARA VISUALIZAR NUMEROS 2 DECIMALES-------------- */
 const verPantalla = (resultado) => {
-    resultado.toString;
-    if (resultado.length == undefined ) {
-        abajo.toString();
-        abajo.innerHTML += resultado.toFixed(2);
-        console.log(abajo.innerHTML)
-    } else abajo.textContent += resultado;
+    if(isNaN(abajo.textContent)) {
+        abajo.textContent = "Error de Sintaxis"
+        setTimeout(()=> {Resetear()},3000);
+    } else abajo.innerHTML += resultado;
 }
 
 /*---------------------PARA BOTONES DE ELIMINAR------------------ */
@@ -109,7 +112,7 @@ const limpiar = ()=> {
 }
 
 const limpiarArriba = ()=> {
-    setTimeout(()=> {arriba.textContent = "";},1000);
+    setTimeout(()=> {arriba.textContent = "";},700);
     clearTimeout();
 }
 const Resetear = ()=> {
@@ -128,7 +131,6 @@ const Eliminar = ()=> {
     abajo.textContent = joder;
 }
 
-const pantalla = document.querySelector(".pantalla");
 const arriba = document.querySelector(".arriba");
 const abajo = document.querySelector(".abajo");
 const borrar = document.querySelector(".reinicio").addEventListener("click", ()=> Resetear());
@@ -139,7 +141,9 @@ const multiplicar = document.querySelector(".multiplica").addEventListener("clic
 const resta = document.querySelector(".resta").addEventListener("click", ()=> Resta());
 const suma = document.querySelector(".suma").addEventListener("click", ()=> Suma());
 const igual = document.querySelector(".igual").addEventListener("click", ()=> Igual());
-const coma = document.querySelector(".coma").addEventListener("click", ()=> pruebaPantalla(20));
+const coma = document.querySelector(".coma").addEventListener("click", ()=> {let abajito = abajo.textContent;
+if(abajito.includes('.') == false){ 
+abajo.innerHTML += ".";}});
 const n1 = document.querySelector(".uno").addEventListener("click", () => pruebaPantalla(1));
 const n2 = document.querySelector(".dos").addEventListener("click", () => pruebaPantalla(2));
 const n3 = document.querySelector(".tres").addEventListener("click", () => pruebaPantalla(3));
