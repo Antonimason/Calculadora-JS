@@ -83,7 +83,7 @@ body {
     height: 150px;
     background: rgba(36,36,36,0.8);
     border-radius: 15px;
-    font-size: 20px;
+    font-size: 15px;
     box-shadow: #094c66 -4px -4px 0px,
     #094c66 1px 1px 0px;
 }
@@ -93,12 +93,12 @@ body {
 }
 
 .sociales {
-    height: 100%;
     position: absolute;
+    bottom: 10px;
+    left: 0;
     z-index: 100;
     font-size: 30px;
     display: flex;
-    height: 100%;
     flex-direction:row;
     align-items: flex-end;
     padding-bottom: 50px;
@@ -115,9 +115,10 @@ a:hover{
 }
 
 .copy {
-    height: 100%;
     position: absolute;
     z-index: 10;
+    bottom: 5px;
+    left: 0;
     font-size: 30px;
     display: flex;
     flex-direction:row;
@@ -138,6 +139,7 @@ a:hover{
     }
     .sociales {
         flex-direction: column;
+        height: 100%;
         align-items:center;
         justify-content: center;
         margin-left: 10px;

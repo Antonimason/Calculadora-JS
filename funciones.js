@@ -8,7 +8,7 @@ var resultado = 0;
 
 /*------------------------------VISUALIZACION DE LOS NUMEROS EN LA PANTALLA-------------------- */
 const pruebaPantalla = (num) => {
-    abajo.style.fontSize = "30px";
+    abajo.style.fontSize = "25px";
     abajo.textContent += num;
     if(abajo.textContent.length > 18) {
         abajo.textContent = "ERROR, NO HAY MÁS ESPACIO";
