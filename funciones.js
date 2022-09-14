@@ -9,7 +9,7 @@ var resultado = 0;
 /*------------------------------VISUALIZACION DE LOS NUMEROS EN LA PANTALLA-------------------- */
 const pruebaPantalla = (num) => {
     arriba.style.fontSize = "27px";
-    abajo.style.fontSize = "23px";
+    abajo.style.fontSize = "21px";
     abajo.textContent += num;
     if(abajo.textContent.length > 14) {
         abajo.textContent = "ERROR: NO HAY MÁS ESPACIO";
