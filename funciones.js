@@ -8,10 +8,11 @@ var resultado = 0;
 
 /*------------------------------VISUALIZACION DE LOS NUMEROS EN LA PANTALLA-------------------- */
 const pruebaPantalla = (num) => {
-    abajo.style.fontSize = "25px";
+    arriba.style.fontSize = "27px";
+    abajo.style.fontSize = "23px";
     abajo.textContent += num;
-    if(abajo.textContent.length > 18) {
-        abajo.textContent = "ERROR, NO HAY MÁS ESPACIO";
+    if(abajo.textContent.length > 14) {
+        abajo.textContent = "ERROR: NO HAY MÁS ESPACIO";
         setTimeout(()=> {
             limpiar();
         },2000);
@@ -99,10 +100,11 @@ const resolver = ()=> {
 }
 /*-----------------------PARA VISUALIZAR NUMEROS 2 DECIMALES-------------- */
 const verPantalla = (resultado) => {
-    if(isNaN(abajo.textContent)) {
+        if(isNaN(abajo.textContent)) {
         abajo.textContent = "Error de Sintaxis"
         setTimeout(()=> {Resetear()},3000);
     } else abajo.innerHTML += resultado;
+
 }
 
 /*---------------------PARA BOTONES DE ELIMINAR------------------ */
@@ -112,8 +114,7 @@ const limpiar = ()=> {
 }
 
 const limpiarArriba = ()=> {
-    setTimeout(()=> {arriba.textContent = "";},700);
-    clearTimeout();
+    arriba.textContent = "";
 }
 const Resetear = ()=> {
     arriba.textContent = "";
