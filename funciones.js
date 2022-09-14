@@ -10,10 +10,10 @@ var resultado = 0;
 const pruebaPantalla = (num) => {
     abajo.textContent += num;
     if(abajo.textContent.length > 14) {
-        abajo.textContent = "ERROR: NO HAY MÁS ESPACIO";
+        abajo.textContent = "ESPACIO INSUFICIENTE";
         setTimeout(()=> {
             limpiar();
-        },2000);
+        },500);
         clearTimeout();
     }
 }
