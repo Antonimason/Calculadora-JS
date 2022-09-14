@@ -100,6 +100,7 @@ const resolver = ()=> {
 }
 /*-----------------------PARA VISUALIZAR NUMEROS 2 DECIMALES-------------- */
 const verPantalla = (resultado) => {
+    resultado = Number(resultado.toFixed(2));
         if(isNaN(abajo.textContent)) {
         abajo.textContent = "Error de Sintaxis"
         setTimeout(()=> {Resetear()},3000);
