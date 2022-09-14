@@ -15,10 +15,10 @@ body {
 }
 
 .abajo{
-    font-size:16px;
+    font-size:16px !important;
 }
 .arriba {
-    font-size: 19px;
+    font-size: 19px !important;
 }
 .fondo {
     width: 100%;
