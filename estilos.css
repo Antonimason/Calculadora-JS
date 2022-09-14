@@ -55,6 +55,7 @@ body {
 
 .calculadora .boton{
     font-size: 18px;
+    color: #000;
     background-color: #1197cc;
     box-shadow: #094c66 4px 4px 0px;
     border-radius: 8px;
