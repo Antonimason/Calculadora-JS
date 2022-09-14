@@ -14,10 +14,10 @@ body {
     background: black;
 }
 
-.abajo{
-    font-size:17px;
+#abajo{
+    font-size:15px;
 }
-.arriba {
+#arriba {
     font-size: 18px;
 }
 .fondo {
@@ -187,10 +187,10 @@ a:hover{
         height: 48px;
         margin: 1px 5px;
     }
-    .arriba {
+    #arriba {
         font-size: 27px;
     }
-    .abajo {
+    #abajo {
         font-size: 21px;
     }
 }
