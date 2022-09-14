@@ -3,11 +3,19 @@
     margin: 0;
     box-sizing: border-box;
 }
+#safari {
+    color: #000;
+    opacity: 1;
+    }
 
 body {
     font-family: sans-serif;
     height: 99vh;
     background: black;
+}
+
+.abajo{
+    background-color: red;
 }
 
 .fondo {

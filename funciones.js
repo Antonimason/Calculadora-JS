@@ -58,13 +58,12 @@ const raizCuadrada = ()=> {
 
 const Igual = ()=> {
     operandoB = abajo.textContent;
-    if (parseInt(operandoB) || operandoB == 0) {
+    if (parseInt(operandoB)) {
         arriba.textContent += abajo.textContent;
         limpiar();
         resolver();
     } else {
-        abajo.textContent = "Error de Sintaxis"
-        setTimeout(()=> {Resetear()},3000);
+        abajo.textContent = "";
     }
 }
 /*--------------------FUNCION PARA RESOLVER----------------- */
@@ -74,24 +73,34 @@ const resolver = ()=> {
         resultado = parseFloat(operandoA) + parseFloat(operandoB);
         if(isNaN(resultado)) {
             limpiar();
-            abajo.textContent = "Error de Sintaxis";
-            setTimeout(()=> {Resetear()},3000);
         } else {
             limpiarArriba();
             abajo.textContent += resultado;
         }
     }else if(operacion === 2) {
-        resultado = parseFloat(operandoA - operandoB);
-        abajo.textContent += resultado;
-        limpiarArriba();
+        resultado = (parseFloat(operandoA) - parseFloat(operandoB));
+        if(isNaN(resultado)) {
+            limpiar();
+        } else {
+            limpiarArriba();
+            abajo.textContent += resultado;
+        }
     }else if(operacion === 3) {
-        resultado = parseFloat(operandoA) * parseFloat(operandoB);
-        verPantalla(resultado);
-        limpiarArriba();
+        resultado = (parseFloat(operandoA) * parseFloat(operandoB));
+        if(isNaN(resultado)) {
+            limpiar();
+        } else {
+            verPantalla(resultado);
+            limpiarArriba();
+        }
     }else if (operacion === 4) {
-        resultado = parseFloat(operandoA) / parseFloat(operandoB);
-        verPantalla(resultado);
-        limpiarArriba();
+        resultado = (parseFloat(operandoA) / parseFloat(operandoB));
+        if(isNaN(resultado)) {
+            limpiar();
+        } else {
+            verPantalla(resultado);
+            limpiarArriba();
+        }
     }else if(operacion === 5) {
         resultado = Math.sqrt(operandoC);
         verPantalla(resultado);
@@ -101,11 +110,7 @@ const resolver = ()=> {
 /*-----------------------PARA VISUALIZAR NUMEROS 2 DECIMALES-------------- */
 const verPantalla = (resultado) => {
     resultado = Number(resultado.toFixed(2));
-        if(isNaN(abajo.textContent)) {
-        abajo.textContent = "Error de Sintaxis"
-        setTimeout(()=> {Resetear()},3000);
-    } else abajo.innerHTML += resultado;
-
+     abajo.innerHTML += resultado;
 }
 
 /*---------------------PARA BOTONES DE ELIMINAR------------------ */
@@ -120,9 +125,9 @@ const limpiarArriba = ()=> {
 const Resetear = ()=> {
     arriba.textContent = "";
     abajo.textContent = "";
-    const operandoA = 0;
-    const operandoB = 0;
-    const operacion = "";
+    operandoA = 0;
+    operandoB = 0;
+    operacion = "";
 }
 
 const Eliminar = ()=> {
