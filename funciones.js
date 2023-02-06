@@ -61,7 +61,12 @@ const Igual = ()=> {
         limpiar();
         resolver();
     } else {
-        abajo.textContent = "";
+        abajo.textContent = "ERROR";
+        setTimeout(()=> {
+            limpiar();
+        },500);
+        clearTimeout();
+
     }
 }
 /*--------------------FUNCION PARA RESOLVER----------------- */
@@ -84,7 +89,7 @@ const resolver = ()=> {
             abajo.textContent += resultado;
         }
     }else if(operacion === 3) {
-        resultado = (parseFloat(operandoA) * parseFloat(operandoB));
+         resultado = (parseFloat(operandoA) * parseFloat(operandoB));
         if(isNaN(resultado)) {
             limpiar();
         } else {

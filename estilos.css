@@ -10,7 +10,6 @@
 
 body {
     font-family: sans-serif;
-    height: 99vh;
     background: black;
 }
 
@@ -24,14 +23,19 @@ body {
     width: 100%;
     height: 100%;
     object-fit:cover;
+    position: absolute;
+    z-index: -1;
+
 }
 
 .contenedor {
-    width: 100%;
-    height: 600px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding-top: 50px;
-    position: absolute;
-    z-index: 10;
 }
 
 .calculadora {
@@ -105,16 +109,11 @@ body {
 
 
 .sociales {
-    position: absolute;
-    bottom: 50px;
-    left: 0;
-    z-index: 100;
-    font-size: 30px;
+    font-size: 20px;
     display: flex;
     flex-direction:row;
     align-items: flex-end;
-    padding-bottom: 10px;
-    margin-left: 10px;
+    padding-top: 15px;
 }
 .sociales a{
     text-decoration: none;
@@ -126,40 +125,14 @@ a:hover{
     color: #094c66;
 }
 
-.copy {
-    position: absolute;
-    z-index: 10;
-    bottom: 20px;
-    left: 0;
-    font-size: 30px;
-    display: flex;
-    flex-direction:row;
-    align-items: flex-end;
-    margin-left: 22px;
-    height: 10px;
-}
 
 .copy p {
     color: white;
-    font-size: 15px;
-    text-align: right;
-}
-@media only screen and (min-height: 900px) {
-    .contenedor {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 90%;
-    }
-
+    font-size: 12px;
 }
 @media only screen and (min-width: 1024px){
-    .contenedor {
-        padding-top: 100px;
-    }
     .sociales {
-        flex-direction: column;
-        height: 100%;
+        flex-direction: row;
         align-items:center;
         justify-content: center;
         margin-left: 10px;
@@ -170,12 +143,6 @@ a:hover{
         margin: 25px 20px;
         text-align:end;
         font-size: 30px;
-    }
-
-    .copy {
-        bottom: 13px;
-        left: 20px;
-
     }
 }
 
